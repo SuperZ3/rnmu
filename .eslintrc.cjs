@@ -8,11 +8,13 @@ module.exports = {
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
+  plugins: ['@react-native-community', 'react-refresh', '@typescript-eslint/eslint-plugin', '@typescript-eslint', 'jest', 'prettier'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
+    '@typescript-eslint/no-use-before-define': ['error'],
+    'prettier/prettier': 'error',
   },
 }
