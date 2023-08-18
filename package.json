@@ -45,33 +45,11 @@
   },
   "lint-staged": {
     "packages/**/*.{ts,tsx}": [
-      "eslint --fix"
+      "eslint --fix",
+      "prettier --write"
     ],
     "**/*.md": [
       "prettier --single-quote --trailing-comma=es5 --write"
-    ]
-  },
-  "jest": {
-    "preset": "react-native",
-    "setupFiles": [
-      "<rootDir>/testSetup.js"
-    ],
-    "setupFilesAfterEnv": [
-      "@testing-library/jest-native/extend-expect"
-    ],
-    "cacheDirectory": "./cache/jest",
-    "testPathIgnorePatterns": [
-      "\\.d\\.ts$"
-    ],
-    "modulePathIgnorePatterns": [
-      "<rootDir>/example/node_modules",
-      "<rootDir>/lib/"
-    ],
-    "watchPathIgnorePatterns": [
-      "__fixtures__\\/[^/]+\\/(output|error)\\.js"
-    ],
-    "transformIgnorePatterns": [
-      "node_modules/(?!(@react-native|react-native(-.*)?)/)"
     ]
   }
 }
