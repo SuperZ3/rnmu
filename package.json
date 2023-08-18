@@ -6,11 +6,12 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "test": "jest",
+    "test": "pnpm --stream -r run test",
     "lint": "eslint ./packages --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview",
     "lint-staged": "lint-staged",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "preinstall": "npx only-allow pnpm"
   },
   "engines": {
     "node": ">=16",
