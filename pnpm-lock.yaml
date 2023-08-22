@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@rnmu/components':
+        specifier: workspace:^
+        version: link:packages/components
     devDependencies:
       '@react-native-community/eslint-config':
         specifier: ^3.2.0
