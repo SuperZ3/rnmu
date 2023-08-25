@@ -3,6 +3,10 @@
   "compilerOptions": {
     "target": "es6",
     "useDefineForClassFields": true,
+    "baseUrl": ".",
+    "paths": {
+      "@rnmu/*": ["packages/*"]
+    },
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,

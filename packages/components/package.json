@@ -2,9 +2,14 @@
   "name": "@rnmu/components",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo yes"
+    "test": "echo yes",
+    "build": "vite vite.config.js"
   },
   "keywords": [],
   "author": "",
