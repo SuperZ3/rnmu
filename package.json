@@ -5,13 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
+    "build": "pnpm --stream -r run build",
     "test": "pnpm --stream -r run test",
     "lint": "eslint ./packages --ext .js,.jsx,.ts,.tsx",
     "preview": "vite preview",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "example:start": "pnpm --filter react-native-metarial-app start",
+    "typecheck": "tsc --noEmit --composite false"
   },
   "engines": {
     "node": ">=16",
@@ -37,8 +39,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-native": "^0.72.4",
-    "typescript": "^5.1.6",
-    "vite": "^4.4.5"
+    "typescript": "^5.1.6"
   },
   "peerDependencies": {
     "react": "*",
