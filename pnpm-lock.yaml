@@ -61,23 +61,26 @@ importers:
         specifier: ^3.0.1
         version: 3.0.1
       react:
-        specifier: ^18.2.0
+        specifier: 18.2.0
         version: 18.2.0
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
       react-native:
-        specifier: ^0.72.4
+        specifier: 0.72.4
         version: 0.72.4(@babel/core@7.22.10)(@babel/preset-env@7.22.10)(react@18.2.0)
       typescript:
         specifier: ^5.1.6
         version: 5.1.6
+      vite:
+        specifier: ^4.4.9
+        version: 4.4.9
 
   example:
     dependencies:
       '@expo/webpack-config':
-        specifier: ^18.1.2
-        version: 18.1.2(expo@49.0.8)
+        specifier: ^19.0.0
+        version: 19.0.0(expo@49.0.8)
       expo:
         specifier: ~49.0.8
         version: 49.0.8(@babel/core@7.22.10)
@@ -87,6 +90,9 @@ importers:
       react:
         specifier: 18.2.0
         version: 18.2.0
+      react-dom:
+        specifier: 18.2.0
+        version: 18.2.0(react@18.2.0)
       react-native:
         specifier: 0.72.4
         version: 0.72.4(@babel/core@7.22.10)(@babel/preset-env@7.22.10)(react@18.2.0)
@@ -2046,11 +2052,11 @@ packages:
     resolution: {integrity: sha512-TI+l71+5aSKnShYclFa14Kum+hQMZ86b95SH6tQUG3qZEmLTarvWpKwqtTwQKqvlJSJrpFiSFu3eCuZokY6zWA==}
     dev: false
 
-  /@expo/webpack-config@18.1.2(expo@49.0.8):
-    resolution: {integrity: sha512-nlYVzcheaOZdxSt31he16f/ZgcdS3BT4BjEU85TwgFUdUJngjhT9wcmmkvXmOYz0o0NBMtZCkX8S0Z2Ta3yuNQ==}
+  /@expo/webpack-config@19.0.0(expo@49.0.8):
+    resolution: {integrity: sha512-mX28BNyf4Cs0+4L44QQyhy5QMVfsYhOdB9Fpf3rp982KTKUsy01UFJ0irGI1jQ68jXrQn5/WU4u1pvN6DDao5Q==}
     engines: {node: '>=12'}
     peerDependencies:
-      expo: ^48.0.17
+      expo: ^49.0.7
     dependencies:
       '@babel/core': 7.22.10
       babel-loader: 8.3.0(@babel/core@7.22.10)(webpack@5.88.2)
@@ -2060,7 +2066,7 @@ packages:
       css-loader: 6.8.1(webpack@5.88.2)
       css-minimizer-webpack-plugin: 3.4.1(webpack@5.88.2)
       expo: 49.0.8(@babel/core@7.22.10)
-      expo-pwa: 0.0.126(expo@49.0.8)
+      expo-pwa: 0.0.127(expo@49.0.8)
       find-up: 5.0.0
       find-yarn-workspace-root: 2.0.0
       getenv: 1.0.0
@@ -5694,8 +5700,8 @@ packages:
       invariant: 2.2.4
     dev: false
 
-  /expo-pwa@0.0.126(expo@49.0.8):
-    resolution: {integrity: sha512-9qb6aIY0awez4FTyIiNhqyekb6sKnbvODOFCDPg23PqpkvdhuzzDRtP/Avgippt8kqRAgPpFXmIp2LaAyH1/aw==}
+  /expo-pwa@0.0.127(expo@49.0.8):
+    resolution: {integrity: sha512-8D9wEDkEXG9r6TPvAFpWt27IiP1cLm/4RWVRUHzFZflbWYLi8GkYArj5LHbbfokybRm1GVAanSrrYFEqHoIUiA==}
     hasBin: true
     peerDependencies:
       expo: '*'
@@ -9592,7 +9598,7 @@ packages:
     dependencies:
       object-assign: 4.1.1
       react: 18.2.0
-      react-is: 17.0.2
+      react-is: 18.2.0
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
