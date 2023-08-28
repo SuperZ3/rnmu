@@ -2,14 +2,15 @@
   "name": "@rnmu/components",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "./dist/index.umd.js",
+  "module": "./dist/index.mjs",
+  "types": "dist/rnmu-components.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
     "test": "echo yes",
-    "build": "vite vite.config.js"
+    "build": "vite build"
   },
   "keywords": [],
   "author": "",
