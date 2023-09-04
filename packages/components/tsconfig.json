@@ -1,5 +1,5 @@
 {
-  "extends": "../../tsconfig",
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "allowJs": true /* Allow javascript files to be compiled. */,
     "outDir": "dist",
@@ -17,3 +17,4 @@
     "src/**/*.usage.tsx"
   ]
 }
+ 

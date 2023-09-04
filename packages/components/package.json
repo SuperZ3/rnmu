@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "echo yes",
-    "build": "vite build"
+    "build": "vite build",
+    "clean-install": "rimraf node_modules"
   },
   "keywords": [],
   "author": "",
