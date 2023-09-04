@@ -10,7 +10,8 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "vite build"
+    "build": "vite build",
+    "clean-install": "rimraf node_modules"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,15 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+    // "extends": "../tsconfig",
+    "references": [
+      {
+        "path": "../packages/components/tsconfig.json"
+      },
+      {
+        "path": "../packages/theme/tsconfig.json"
+      }
+    ],
+    "compilerOptions": {
+      // Avoid expo-cli auto-generating a tsconfig
+    },
+    "exclude": ["node_modules", "*.config.js"]
 }
