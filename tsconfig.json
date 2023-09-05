@@ -3,9 +3,11 @@
   "compilerOptions": {
     "target": "es6",
     "useDefineForClassFields": true,
+    "rootDir": ".",
     "baseUrl": ".",
     "paths": {
-      "@rnmu/*": ["packages/*"]
+      "@rnmu/*": ["packages/*/src"],
+      "@rneui/base/dist/*": ["./packages/base/src/*"]
     },
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "module": "ESNext",
@@ -17,6 +19,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "composite": true,
+    // "emitDeclarationOnly": true,
     "noEmit": true,
     "jsx": "react-jsx",
 
@@ -30,5 +33,9 @@
     "example",
     "packages/**/__tests__"
   ],
-  "references": [{ "path": "./tsconfig.node.json" }]
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./packages/components" },
+    { "path": "./packages/theme" }
+  ]
 }

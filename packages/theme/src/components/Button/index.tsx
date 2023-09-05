@@ -1,3 +1,5 @@
-import Button from '@rnmu/components/src/Button';
+import { Button, ButtonProps } from '@rnmu/components';
 
-export default Button;
+export { Button };
+
+export type { ButtonProps };

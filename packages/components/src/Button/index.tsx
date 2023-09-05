@@ -1,3 +1,5 @@
-const Button = () => <>Hello World</>;
+import { Button, ButtonProps } from './Button';
 
-export default Button;
+export { Button };
+
+export type { ButtonProps };
