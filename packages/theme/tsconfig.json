@@ -1,14 +1,10 @@
 {
     "extends": "../../tsconfig",
-    "references": [
-      {
-        "path": "../components/tsconfig"
-      }
-    ],
     "compilerOptions": {
       "allowJs": true /* Allow javascript files to be compiled. */,
-      "outDir": "dist",
+      "outDir": "build",
       "declaration": true,
+      "noEmit": true,
       "composite": true
     },
     "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
@@ -20,6 +16,7 @@
       "jest.config.js",
       "src/index.d.ts",
       "src/**/__tests__"
-    ]
+    ],
+    "references": [{"path": "../components/tsconfig.json"}]
   }
   

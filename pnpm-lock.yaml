@@ -125,7 +125,7 @@ importers:
   packages/components: {}
 
   packages/theme:
-    devDependencies:
+    dependencies:
       '@rnmu/components':
         specifier: workspace:^
         version: link:../components
