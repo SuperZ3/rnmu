@@ -6,7 +6,7 @@
     "declaration": true,
     "composite": true,
     // "noEmit": true,
-    // "rootDir": "src"
+    "rootDir": "src"
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
   "exclude": [
