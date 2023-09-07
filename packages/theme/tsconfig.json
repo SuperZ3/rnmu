@@ -1,11 +1,13 @@
 {
-    "extends": "../../tsconfig",
+    "extends": "../../tsconfig.base.json",
     "compilerOptions": {
       "allowJs": true /* Allow javascript files to be compiled. */,
-      "outDir": "build",
+      "outDir": "dist",
       "declaration": true,
-      "noEmit": true,
-      "composite": true
+      // "emitDeclarationOnly": true,
+      // "noEmit": true,
+      "composite": true,
+      "rootDir": "src"
     },
     "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
     "exclude": [
@@ -17,6 +19,6 @@
       "src/index.d.ts",
       "src/**/__tests__"
     ],
-    "references": [{"path": "../components/tsconfig.json"}]
+    "references": [{"path": "../components"}]
   }
   

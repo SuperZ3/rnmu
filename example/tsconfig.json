@@ -4,15 +4,16 @@
       // Avoid expo-cli auto-generating a tsconfig
       "baseUrl": ".",
       "paths": {
-        "@rnmu/*": ["../packages/*/src"]
-      }
+        "@rnmu/*": ["../packages/*"]
+      },
+      "noEmit": true
     },
     "include": [
       "../packages/*",
     ],
     "exclude": ["node_modules", "*.config.js"],
     "references": [
-      {"path": "../packages/theme/tsconfig.json"},
-      {"path": "../packages/components/tsconfig.json"}
+      {"path": "../packages/theme"},
+      {"path": "../packages/components"}
     ]
 }

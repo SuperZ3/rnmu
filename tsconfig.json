@@ -2,26 +2,8 @@
   "Display": "React Native Metarial UI",
   "compilerOptions": {
     "target": "es6",
-    "useDefineForClassFields": true,
-    "rootDir": ".",
-    "baseUrl": ".",
-    "paths": {
-      "@rnmu/*": ["packages/*/src"],
-      "@rneui/base/dist/*": ["./packages/base/src/*"]
-    },
-    "lib": ["ESNext", "DOM", "DOM.Iterable"],
-    "module": "ESNext",
-    "skipLibCheck": true,
-
     /* Bundler mode */
     "moduleResolution": "bundler",
-    "allowImportingTsExtensions": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "composite": true,
-    // "emitDeclarationOnly": true,
-    "noEmit": true,
-    "jsx": "react-jsx",
 
     /* Linting */
     "strict": true,
@@ -29,9 +11,11 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
+  "files": [],
   "exclude": [
     "example",
-    "packages/**/__tests__"
+    "packages/*/src/**/__tests__",
+    "packages/*/dist/**",
   ],
   "references": [
     { "path": "./tsconfig.node.json" },
