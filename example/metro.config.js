@@ -1,5 +1,5 @@
 // Learn more https://docs.expo.dev/guides/monorepos/
-// TODO: expo dose not support symlinks,thinking use React-Native Cli instead
+// TODO: expo dosn't support symlinks,thinking about use React-Native Cli instead
 const { getDefaultConfig } = require('expo/metro-config');
 const path = require('path');
 
