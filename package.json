@@ -3,19 +3,16 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "source": "./packages/theme/src",
   "scripts": {
-    "dev": "vite",
     "build": "pnpm --stream -r run build",
     "test": "pnpm --stream -r run test",
+    "example:start": "pnpm --filter @rnmu/example start",
     "lint": "eslint ./packages --ext .js,.jsx,.ts,.tsx",
-    "preview": "vite preview",
     "lint-staged": "lint-staged",
     "prepare": "husky install",
     "preinstall": "npx only-allow pnpm",
-    "example:start": "pnpm --filter @rnmu/example start",
     "typecheck": "tsc --noEmit --composite false",
-    "clean-install": "pnpm -r run clean-install & rimraf node_modules"
+    "clean-install": "pnpm -r run clean-install && rimraf node_modules && pnpm install"
   },
   "engines": {
     "node": ">=16",
