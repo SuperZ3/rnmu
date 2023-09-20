@@ -14,7 +14,6 @@
     "dist",
     "node_modules",
     "src/index.d.ts",
-    "src/**/__tests__",
     "src/**/*.usage.tsx"
   ]
 }

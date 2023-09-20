@@ -9,7 +9,7 @@
     "dist"
   ],
   "scripts": {
-    "test": "echo yes",
+    "test": "jest",
     "build": "vite build",
     "clean-install": "rimraf node_modules"
   },
