@@ -1,11 +1,10 @@
 {
   "extends": "../../tsconfig.base.json",
   "compilerOptions": {
-    "allowJs": true /* Allow javascript files to be compiled. */,
+    "allowJs": true,
     "outDir": "dist",
     "declaration": true,
     "composite": true,
-    // "noEmit": true,
     "rootDir": "src"
   },
   "include": ["src/**/*.tsx", "src/**/*.ts", "src/index.ts"],
@@ -14,7 +13,9 @@
     "dist",
     "node_modules",
     "src/index.d.ts",
-    "src/**/*.usage.tsx"
+    "src/**/*.usage.tsx",
+    "es",
+    "lib"
   ]
 }
  

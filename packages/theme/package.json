@@ -2,15 +2,19 @@
   "name": "@rnmu/theme",
   "version": "1.0.0",
   "description": "",
-  "main": "./dist/index.umd.js",
-  "module": "./dist/index.mjs",
-  "types": "dist/rnmu-components.d.ts",
+  "main": "./lib/index.js",
+  "module": "./es/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "es",
+    "lib"
   ],
   "scripts": {
     "test": "jest",
-    "build": "vite build",
+    "build-types": "tsc --composite false",
+    "move-dts": "tsx ../../scripts/move_dts.ts && rimraf ./dist",
+    "build": "pnpm run build-types && vite -c ../../vite.config.ts build && pnpm run move-dts",
     "clean-install": "rimraf node_modules"
   },
   "keywords": [],
