@@ -16,6 +16,9 @@
     "example",
     "packages/*/src/**/__tests__",
     "packages/*/dist/**",
+    "packages/*/es/**",
+    "packages/*/lib/**",
+    "packages/*/coverage/**",
   ],
   "references": [
     { "path": "./tsconfig.node.json" },

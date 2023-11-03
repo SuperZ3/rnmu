@@ -1,11 +1,12 @@
 {
     "extends": "../../tsconfig.base.json",
     "compilerOptions": {
-      "allowJs": true /* Allow javascript files to be compiled. */,
+      "paths": {
+        "@rnmu/*": ["../packages/*/src"]
+      },
+      "allowJs": true,
       "outDir": "dist",
       "declaration": true,
-      // "emitDeclarationOnly": true,
-      // "noEmit": true,
       "composite": true,
       "rootDir": "src"
     },
@@ -13,10 +14,12 @@
     "exclude": [
       ".ci",
       "dist",
+      "es",
+      "lib",
       "node_modules",
       "babel.config.js",
       "src/index.d.ts"
     ],
-    "references": [{"path": "../components"}]
+    "references": [{"path": "../components/tsconfig.json"}]
   }
   
