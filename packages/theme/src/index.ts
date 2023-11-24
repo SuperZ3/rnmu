@@ -1,5 +1,6 @@
 import { Button, ButtonProps } from './Button';
+import { Ripple, RippleProps } from './Ripple';
 
-export { Button };
+export { Button, Ripple };
 
-export type { ButtonProps };
+export type { ButtonProps, RippleProps };

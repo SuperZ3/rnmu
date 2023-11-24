@@ -1,3 +1,11 @@
 **/__tests__/**
 **/dist/**
+**/es/**
+**/lib/**
 node_modules
+
+!.prettierrc
+!.npmrc
+!.gitignore
+!.eslintrc.cjs
+!.vite.config.ts

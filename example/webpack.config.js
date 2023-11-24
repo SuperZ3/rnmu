@@ -16,9 +16,11 @@ module.exports = async function (env, argv) {
   config.resolve.alias['react-native$'] = 'react-native-web'
 
   fs.readdirSync(packages).forEach((dirname) => {
-    const pak = require(`../packages/${dirname}/package.json`);
-    config.resolve.alias[pak.name] = path.resolve(packages, dirname, 'src')
+    const pkgPath = `../packages/${dirname}/package.json`
+    if (fs.existsSync(pkgPath)) {
+      const pak = require(pkgPath);
+      config.resolve.alias[pak.name] = path.resolve(packages, dirname, 'src')
+    }
   })
-
   return config
 }
