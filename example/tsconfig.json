@@ -10,7 +10,8 @@
     },
     "include": [
       "../packages/*/src",
-      "./**/*.js"
+      "./**/*.js",
+      "./components"
     ],
     "exclude": ["node_modules", "*.config.js"],
     "references": [

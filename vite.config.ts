@@ -42,7 +42,12 @@ export default defineConfig({
           format: "cjs",
           entryFileNames: "[name].js",
           exports: "named",
-          dir: path.resolve(workPath, `lib`)
+          dir: path.resolve(workPath, `lib`),
+          globals: {
+            'react': 'React',
+            'react-dom': 'ReactDom',
+            'react-native': 'ReactNative'
+          }
         }
       ]
     },
