@@ -79,21 +79,8 @@ export const Ripple: React.FC<RippleProps> = props => {
     });
   }
 
-  function startAnim(ripple: RippleElementConfig, onRippleRemove: () => void) {
-    Animated.timing(ripple.rippleAnim, {
-      toValue: 1,
-      easing: Easing.inOut(Easing.ease),
-      duration: 800,
-      useNativeDriver: true,
-    }).start(({ finished }) => finished && onRippleRemove());
-  }
-
-  function removeRipple() {
-    setRipples(ripples => ripples.slice(1));
-  }
-
   function handlePressIn(event: GestureResponderEvent) {
-    const { locationX, locationY } = event.nativeEvent;
+    const { locationX, locationY, timestamp } = event.nativeEvent;
     const halfW = target.width * 0.5;
     const halfH = target.height * 0.5;
     const centerX = centered ? halfW : locationX;
@@ -102,19 +89,33 @@ export const Ripple: React.FC<RippleProps> = props => {
     const offsetY = Math.abs(centerY - halfH);
     const R = Math.sqrt((halfW + offsetX) ** 2 + (halfH + offsetY) ** 2);
     const ripple = {
-      uid: Date.now(),
+      uid: timestamp,
       centerX,
       centerY,
       rippleAnim: new Animated.Value(0),
       R,
     };
 
-    startAnim(ripple, removeRipple);
+    Animated.timing(ripple.rippleAnim, {
+      toValue: 1,
+      easing: Easing.inOut(Easing.ease),
+      duration: 800,
+      useNativeDriver: true,
+    }).start();
 
-    setRipples(ripples.concat(ripple));
+    setRipples(ripples => ripples.concat(ripple));
   }
 
-  function handlePressOut() {}
+  function handlePressOut(event: GestureResponderEvent) {
+    const { timestamp } = event.nativeEvent;
+    if (ripples.length === 1 && timestamp - ripples[0].uid > 800) {
+      setRipples(ripples => ripples.slice(1));
+    } else {
+      setTimeout(() => {
+        setRipples(ripples => ripples.slice(1));
+      }, 800);
+    }
+  }
 
   return (
     <Pressable
