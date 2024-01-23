@@ -6,7 +6,6 @@
   "scripts": {
     "build-all": "pnpm -r run build",
     "build-components": "pnpm --filter @rnmu/components run build",
-    "build-theme": "pnpm --filter @rnmu/theme run build",
     "test": "pnpm -r run test",
     "example:start": "pnpm --filter @rnmu/example start",
     "lint": "eslint ./packages --ext .js,.jsx,.ts,.tsx",

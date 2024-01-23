@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import {
   GestureResponderEvent,
   LayoutChangeEvent,
@@ -9,7 +9,7 @@ import { getRipple, startAnimated } from './utils';
 import { RippleElementConfig, RippleProps } from './ripple.type';
 import RippleElement from './RippleElement';
 
-const Ripple: React.FC<RippleProps> = props => {
+const RippleWeb: React.FC<RippleProps> = props => {
   const {
     children,
     foreground = false,
@@ -19,9 +19,8 @@ const Ripple: React.FC<RippleProps> = props => {
     underlayColor,
     centered = false,
     disabled = false,
-    onPress,
+    onPressIn,
     onPressOut,
-    onLongPress,
     onLayout,
     style,
     ...rest
@@ -31,7 +30,6 @@ const Ripple: React.FC<RippleProps> = props => {
     height: 0,
   });
   const [ripples, setRipples] = useState<RippleElementConfig[]>([]);
-  const isLongPress = useRef<boolean>(false);
 
   function handleLayout(event: LayoutChangeEvent) {
     const { width, height } = event.nativeEvent.layout;
@@ -42,54 +40,38 @@ const Ripple: React.FC<RippleProps> = props => {
     onLayout?.(event);
   }
 
-  function handlePress(event: GestureResponderEvent) {
-    isLongPress.current = false;
-    const ripple = getRipple(event, target.width, target.height, centered);
-    startAnimated(
-      ripple,
-      rippleDuration,
-      finished => finished && setRipples(ripples => ripples.slice(1)),
-    );
-    setRipples(ripples => ripples.concat(ripple));
-    onPress?.(event);
-  }
-
-  function handleLongPress(event: GestureResponderEvent) {
-    isLongPress.current = true;
+  function handlePressIn(event: GestureResponderEvent) {
     const ripple = getRipple(event, target.width, target.height, centered);
     startAnimated(ripple, rippleDuration);
     setRipples(ripples => ripples.concat(ripple));
-    onLongPress?.(event);
+    onPressIn?.(event);
   }
 
   function handlePressOut(event: GestureResponderEvent) {
-    if (isLongPress.current) {
-      isLongPress.current = false;
-      if (ripples.length > 0) {
-        const outTimeStemp = event.nativeEvent.timestamp;
-        ripples.forEach(ripple => {
-          const delay =
-            outTimeStemp - ripple.uid > rippleDuration ? 0 : rippleDuration;
-          setTimeout(() => {
-            setRipples(ripples => ripples.slice(1));
-          }, delay);
-        });
-      }
+    const outTimeStemp = event.nativeEvent.timestamp;
+    if (ripples.length > 0) {
+      // make longPress finish as soon as possible
+      const delay =
+        ripples.length === 1 && outTimeStemp - ripples[0].uid > rippleDuration
+          ? 0
+          : rippleDuration;
+      setTimeout(() => {
+        setRipples(ripples => ripples.slice(1));
+      }, delay);
     }
     onPressOut?.(event);
   }
 
   return (
     <Pressable
-      onPress={handlePress}
-      onLongPress={handleLongPress}
+      onPressIn={handlePressIn}
       onPressOut={handlePressOut}
       onLayout={handleLayout}
-      disabled={disabled}
       style={pressed => [
         { overflow: 'hidden' },
         isFunction(style) ? style(pressed) : style,
       ]}
+      disabled={disabled}
       {...rest}
     >
       {pressed => {
@@ -112,4 +94,4 @@ const Ripple: React.FC<RippleProps> = props => {
   );
 };
 
-export default Ripple;
+export default RippleWeb;

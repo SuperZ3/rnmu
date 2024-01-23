@@ -15,7 +15,6 @@
     ],
     "exclude": ["node_modules", "*.config.js"],
     "references": [
-      {"path": "../packages/theme/tsconfig.json"},
       {"path": "../packages/components/tsconfig.json"}
     ]
 }

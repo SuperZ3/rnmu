@@ -1,0 +1,267 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Ripple Component ripple effect ripple effect prop match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Button
+  </Text>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "red",
+        "borderRadius": 0,
+        "height": 0,
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+        "transform": [
+          {
+            "scale": 0,
+          },
+          {
+            "perspective": 1000,
+          },
+        ],
+        "width": 0,
+        "zIndex": -1,
+      }
+    }
+    testID="RippleElementTestId"
+  />
+</View>
+`;
+
+exports[`Ripple Component ripple effect ripple effect props match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Button
+  </Text>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "red",
+        "borderRadius": 0,
+        "height": 0,
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+        "transform": [
+          {
+            "scale": 0,
+          },
+          {
+            "perspective": 1000,
+          },
+        ],
+        "width": 0,
+        "zIndex": -1,
+      }
+    }
+    testID="RippleElementTestId"
+  />
+</View>
+`;
+
+exports[`Ripple Component should render children correctly 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Button
+  </Text>
+</View>
+`;
+
+exports[`RippleWeb Component ripple effect ripple effect props match snapshot 1`] = `
+<View
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onBlur={[Function]}
+  onClick={[Function]}
+  onFocus={[Function]}
+  onLayout={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    [
+      {
+        "overflow": "hidden",
+      },
+      undefined,
+    ]
+  }
+>
+  <Text>
+    Button
+  </Text>
+  <View
+    collapsable={false}
+    style={
+      {
+        "backgroundColor": "red",
+        "borderRadius": 0,
+        "height": 0,
+        "left": 0,
+        "opacity": 0,
+        "pointerEvents": "none",
+        "position": "absolute",
+        "top": 0,
+        "transform": [
+          {
+            "scale": 0,
+          },
+          {
+            "perspective": 1000,
+          },
+        ],
+        "width": 0,
+        "zIndex": -1,
+      }
+    }
+    testID="RippleElementTestId"
+  />
+</View>
+`;
