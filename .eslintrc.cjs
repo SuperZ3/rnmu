@@ -4,6 +4,7 @@ module.exports = {
   extends: [
     'airbnb-base',
     'eslint:recommended',
+    'plugin:prettier/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
   ],
@@ -15,6 +16,7 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
+    'import/no-named-as-default': 0,
     '@typescript-eslint/no-use-before-define': ['off'],
     'no-unused-vars': 0,
     'arrow-parens': 'off',

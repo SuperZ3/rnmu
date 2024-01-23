@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react-native';
-import { Button } from '..';
+import { Button } from '../Button';
 
 describe('Button Component', () => {
   it('should match snapshot', () => {

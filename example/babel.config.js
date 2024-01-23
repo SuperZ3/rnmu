@@ -13,11 +13,6 @@ module.exports = function(api) {
               __dirname,
               '..',
               'packages/components/src'
-            ),
-            '@rneui/theme': path.resolve(
-              __dirname,
-              '..',
-              'packages/theme/src'
             )
           }
         }

@@ -22,7 +22,6 @@
   ],
   "references": [
     { "path": "./tsconfig.node.json" },
-    { "path": "./packages/components" },
-    { "path": "./packages/theme" }
+    { "path": "./packages/components" }
   ]
 }
