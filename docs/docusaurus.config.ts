@@ -3,7 +3,7 @@ import type {Config} from '@docusaurus/types';
 import type * as Preset from '@docusaurus/preset-classic';
 
 const config: Config = {
-  title: 'My Site',
+  title: 'React Native Metarial UI',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
 
@@ -17,7 +17,11 @@ const config: Config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'facebook', // Usually your GitHub org/user name.
   projectName: 'docusaurus', // Usually your repo name.
-
+  clientModules: [
+    require.resolve('./plugins/snackPlayerInitializer.js'),
+  ],
+  plugins: ['./plugins/react-native-elements-web.js'],
+  scripts: [{ src: 'https://snack.expo.io/embed.js', defer: true }],
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
 
@@ -34,9 +38,12 @@ const config: Config = {
       'classic',
       {
         docs: {
+          exclude: ['**/component_usage/**'],
           sidebarPath: './sidebars.ts',
+          routeBasePath: 'docs',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
+          remarkPlugins: [require('./plugins/remark-snackplayer')],
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },

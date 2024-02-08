@@ -3,7 +3,35 @@ id: button
 title: Button
 ---
 
+import Tabs from "@theme/Tabs";
+import TabItem from "@theme/TabItem";
+import CodeBlock from "@theme/CodeBlock";
+import { BiInfoCircle } from "react-icons/bi";
+import Usage from "../component_usage/Button.mdx";
+
 Buttons are touchable elements used to interact with the screen and to perform and operation. They may display text, icons, or both. Buttons can be styled with several props to look a specific way.
+
+## Usage
+
+<div class="row inline-flex-center">
+  <div class="col col--3">
+    <h4>Import</h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`import { Button } from '@rneui/themed';`}</CodeBlock>
+  </div>
+  <div class="col col--3">
+    <h4>
+      Theme Key{" "}
+      <a href="../customizing#using-themeprovider">
+        <BiInfoCircle />
+      </a>
+    </h4>
+  </div>
+  <div class="col col--9">
+    <CodeBlock>{`Button`}</CodeBlock>
+  </div>
+</div>
 
 ### Variants
 
@@ -82,6 +110,8 @@ Can contain an Icon by setting the icon prop or placing an Icon component within
 <Button title="Solid" type="solid" loading />
 ```
 
+<Usage />
+
 ## Props
 
 :::note
@@ -118,5 +148,3 @@ Includes all [TouchableOpacityProps](https://reactnative.dev/docs/touchableopaci
 | `uppercase`           | boolean                                                                   | `false` | Uppercase button title                                                                                                                                   |
 
 </div>
-
-## Playground
