@@ -7,8 +7,10 @@
 
 'use strict';
 
-const visit = require('unist-util-visit-parents');
+const {visit} = require('unist-util-visit');
 const fromEntries = require('object.fromentries');
+const {u} = require('unist-builder');
+const dedent = require('dedent');
 
 const parseParams = (paramString = '') => {
   const params = fromEntries(new URLSearchParams(paramString));
@@ -29,33 +31,21 @@ function attr(name, value) {
 }
 
 async function toJsxNode(node) {
-  
   const params = parseParams(node.meta);
-  // Gather necessary Params
   const name = params.name ? decodeURIComponent(params.name) : 'Example';
   const description = params.description
     ? decodeURIComponent(params.description)
     : 'Example usage';
-  const ext = params.ext ? decodeURIComponent(params.ext) : 'tsx';
-  const filename = `App.${ext}`;
-  const files = encodeURIComponent(
-    JSON.stringify({
-      [filename]: {
-        type: 'CODE',
-        contents: node.value,
-      },
-    })
-  );
-  const dependencies = params.dependencies || '';
+
+  const dependencies = encodeURIComponent(params.dependencies || '@rnmu/components');
   const platform = params.platform || 'web';
   const supportedPlatforms = params.supportedPlatforms || 'ios,android,web';
   const theme = params.theme || 'light';
   const preview = params.preview || 'true';
   const loading = params.loading || 'lazy';
-
-  // Need help constructing this AST node?
-  // Use the MDX Playground and explore what your output mdast should look like
-  // https://mdxjs.com/playground/
+  // const deviceAndroid = params.deviceAndroid || 'pixel4';
+  // const deviceIos = params.deviceIos || 'iphone12';
+  const encodedSampleCode = encodeURIComponent(node.value);
   const jsxNode = {
     type: 'mdxJsxTextElement',
     name: 'div',
@@ -63,79 +53,24 @@ async function toJsxNode(node) {
       attr('class', 'snack-player'),
       attr('data-snack-name', name),
       attr('data-snack-description', description),
-      attr('data-snack-files', files),
+      attr('data-snack-code', encodedSampleCode),
       attr('data-snack-dependencies', dependencies),
       attr('data-snack-platform', platform),
       attr('data-snack-supported-platforms', supportedPlatforms),
       attr('data-snack-theme', theme),
       attr('data-snack-preview', preview),
-      attr('data-snack-loading', loading),
-      attr('data-snack-device-frame', 'false'),
+      attr('data-snack-loading', loading)
     ],
     children: [],
   };
-
-  // We "replace" the current node by a JSX node
   Object.keys(node).forEach(key => delete node[key]);
   Object.keys(jsxNode).forEach(key => (node[key] = jsxNode[key]));
 }
 
-const processNode = (node, parent) => {
-  return new Promise(async (resolve, reject) => {
-    try {
-      const params = parseParams(node.meta);
-
-      // Gather necessary Params
-      const name = params.name ? decodeURIComponent(params.name) : 'Example';
-      const description = params.description
-        ? decodeURIComponent(params.description)
-        : 'Example usage';
-      const sampleCode = node.value;
-      const encodedSampleCode = encodeURIComponent(sampleCode);
-
-      const dependencies =
-        params.dependencies ||
-        '@rneui/themed,@rneui/base' +
-          (name.includes('Tooltip') ? ',modal-react-native-web' : '');
-      const platform = params.platform || 'web';
-      const supportedPlatforms = params.supportedPlatforms || 'ios,android,web';
-      const theme = params.theme || 'light';
-      const preview = params.preview || 'true';
-      const loading = params.loading || 'lazy';
-
-      // Generate Node for SnackPlayer
-      // See https://github.com/expo/snack/blob/main/docs/embedding-snacks.md
-      const snackPlayerDiv = u('html', {
-        value: dedent`
-          <div
-            class="snack-player"
-            data-snack-name="${name}"
-            data-snack-description="${description}"
-            data-snack-code="${encodedSampleCode}"
-            data-snack-dependencies="${dependencies}"
-            data-snack-platform="${platform}"
-            data-snack-supported-platforms="${supportedPlatforms}"
-            data-snack-theme="${theme}"
-            data-snack-preview="${preview}"
-            data-snack-loading="${loading}"
-          ></div>
-          `,
-      });
-
-      // Replace code block with SnackPlayer Node
-      const index = parent[0].children.indexOf(node);
-      parent[0].children.splice(index, 1, snackPlayerDiv);
-    } catch (e) {
-      return reject(e);
-    }
-    resolve();
-  });
-};
-
 const SnackPlayer = () => {
   return async tree => {
     const nodesToProcess = [];
-    visit.visitParents(tree, 'code', (node, parent) => {
+    visit(tree, 'code', (node, parent) => {
       if (node.lang === 'SnackPlayer') {
         nodesToProcess.push(toJsxNode(node, parent));
       }

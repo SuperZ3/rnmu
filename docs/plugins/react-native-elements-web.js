@@ -58,7 +58,7 @@ const a = function () {
         resolve: {
           alias: {
             'react-native$': 'react-native-web',
-            '@rnmu$': path.resolve(nodeModules, '@rnmu/components/src'),
+            '@rnmu/components$': path.resolve(nodeModules, '@rnmu/components/src'),
             'react-native-linear-gradient': 'react-native-web-linear-gradient',
           },
           fallback: isServer
