@@ -16,7 +16,7 @@ const config: Config = {
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  projectName: 'docusaurus', // Usually your repo named.
   clientModules: [
     require.resolve('./plugins/snackPlayerInitializer.js'),
   ],
@@ -27,19 +27,19 @@ const config: Config = {
 
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
-  // may want to replace "en" with "zh-Hans".
+  // may want to replace "en" with "zh-Hanss".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
   },
-
+  trailingSlash: false,
   presets: [
     [
-      'classic',
+      '@docusaurus/preset-classic',
       {
         docs: {
           exclude: ['**/component_usage/**'],
-          sidebarPath: './sidebars.ts',
+          sidebarPath: require.resolve('./sidebars.ts'),
           routeBasePath: 'docs',
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -47,22 +47,15 @@ const config: Config = {
           editUrl:
             'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
         },
-        blog: {
-          showReadingTime: true,
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-            'https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/',
-        },
         theme: {
           customCss: './src/css/custom.css',
         },
-      } satisfies Preset.Options,
+      },
     ],
   ],
 
   themeConfig: {
-    // Replace with your project's social card
+    // Replace with your project's social cardd
     image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'My Site',
