@@ -1,0 +1,23 @@
+{
+  "id": "components/button",
+  "title": "Button",
+  "description": "Buttons are touchable elements used to interact with the screen and to perform and operation. They may display text, icons, or both. Buttons can be styled with several props to look a specific way.",
+  "source": "@site/docs/components/Button.mdx",
+  "sourceDirName": "components",
+  "slug": "/components/button",
+  "permalink": "/docs/components/button",
+  "draft": false,
+  "unlisted": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/components/Button.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {
+    "id": "button",
+    "title": "Button"
+  },
+  "sidebar": "tutorialSidebar",
+  "previous": {
+    "title": "Tutorial Intro",
+    "permalink": "/docs/intro"
+  }
+}
