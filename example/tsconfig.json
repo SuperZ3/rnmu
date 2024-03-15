@@ -11,8 +11,9 @@
     "include": [
       "../packages/*/src",
       "./**/*.js",
-      "./components"
-    ],
+      "./components",
+      "./navigation"
+, "metro.config.cjs"    ],
     "exclude": ["node_modules", "*.config.js"],
     "references": [
       {"path": "../packages/components/tsconfig.json"}
