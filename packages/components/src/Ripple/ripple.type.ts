@@ -9,7 +9,7 @@ export interface RippleProps extends PressableProps {
   rippleDuration?: number; // Duration of th ripple effect
   underlayColor?: ColorValue; // Color of the underlay for the highlight effect
   centered?: boolean; // Whether to start the ripple at the center
-  disabled?: boolean; // Whether to prevent interaction with the touchable.
+  disableEffect?: boolean; // Whether to stop effect animation
 }
 
 export type RippleElementConfig = {

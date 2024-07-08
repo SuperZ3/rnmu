@@ -14,11 +14,11 @@ const Ripple: React.FC<RippleProps> = props => {
     children,
     foreground = false,
     rippleColor = 'rgb(0, 0, 0)',
-    rippleOpcity = 0.3,
+    rippleOpcity = 0.2,
     rippleDuration = 400,
     underlayColor,
     centered = false,
-    disabled = false,
+    disableEffect = false,
     onPress,
     onPressOut,
     onLongPress,
@@ -43,22 +43,26 @@ const Ripple: React.FC<RippleProps> = props => {
   }
 
   function handlePress(event: GestureResponderEvent) {
-    isLongPress.current = false;
-    const ripple = getRipple(event, target.width, target.height, centered);
-    startAnimated(
-      ripple,
-      rippleDuration,
-      finished => finished && setRipples(ripples => ripples.slice(1)),
-    );
-    setRipples(ripples => ripples.concat(ripple));
+    if (!disableEffect) {
+      isLongPress.current = false;
+      const ripple = getRipple(event, target.width, target.height, centered);
+      startAnimated(
+        ripple,
+        rippleDuration,
+        finished => finished && setRipples(ripples => ripples.slice(1)),
+      );
+      setRipples(ripples => ripples.concat(ripple));
+    }
     onPress?.(event);
   }
 
   function handleLongPress(event: GestureResponderEvent) {
-    isLongPress.current = true;
-    const ripple = getRipple(event, target.width, target.height, centered);
-    startAnimated(ripple, rippleDuration);
-    setRipples(ripples => ripples.concat(ripple));
+    if (!disableEffect) {
+      isLongPress.current = true;
+      const ripple = getRipple(event, target.width, target.height, centered);
+      startAnimated(ripple, rippleDuration);
+      setRipples(ripples => ripples.concat(ripple));
+    }
     onLongPress?.(event);
   }
 
@@ -85,7 +89,6 @@ const Ripple: React.FC<RippleProps> = props => {
       onLongPress={handleLongPress}
       onPressOut={handlePressOut}
       onLayout={handleLayout}
-      disabled={disabled}
       style={pressed => [
         { overflow: 'hidden' },
         isFunction(style) ? style(pressed) : style,

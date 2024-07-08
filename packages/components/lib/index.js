@@ -1,8 +1,15 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const Button_Button = require("./Button/Button.js");
-const Ripple_Ripple = require("./Ripple/Ripple.js");
+const Ripple_index = require("./Ripple/index.js");
+const Icon_Icon = require("./Icon/Icon.js");
 require("react-native");
+require("./utils.js");
+require("./Ripple/Ripple.js");
 require("react");
+require("./Ripple/utils.js");
+require("./Ripple/RippleElement.js");
+require("./Ripple/Ripple.web.js");
 exports.Button = Button_Button.Button;
-exports.Ripple = Ripple_Ripple.Ripple;
+exports.Ripple = Ripple_index.Ripple;
+exports.Icon = Icon_Icon.Icon;

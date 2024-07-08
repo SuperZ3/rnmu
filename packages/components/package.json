@@ -20,5 +20,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "react-native-vector-icons": "^10.0.3"
+  }
 }

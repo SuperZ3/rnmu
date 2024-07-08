@@ -16,9 +16,8 @@ const RippleWeb: React.FC<RippleProps> = props => {
     rippleColor = 'rgb(0, 0, 0)',
     rippleOpcity = 0.3,
     rippleDuration = 400,
-    underlayColor,
     centered = false,
-    disabled = false,
+    disableEffect = false,
     onPressIn,
     onPressOut,
     onLayout,
@@ -41,23 +40,27 @@ const RippleWeb: React.FC<RippleProps> = props => {
   }
 
   function handlePressIn(event: GestureResponderEvent) {
-    const ripple = getRipple(event, target.width, target.height, centered);
-    startAnimated(ripple, rippleDuration);
-    setRipples(ripples => ripples.concat(ripple));
+    if (!disableEffect) {
+      const ripple = getRipple(event, target.width, target.height, centered);
+      startAnimated(ripple, rippleDuration);
+      setRipples(ripples => ripples.concat(ripple));
+    }
     onPressIn?.(event);
   }
 
   function handlePressOut(event: GestureResponderEvent) {
-    const outTimeStemp = event.nativeEvent.timestamp;
-    if (ripples.length > 0) {
-      // make longPress finish as soon as possible
-      const delay =
-        ripples.length === 1 && outTimeStemp - ripples[0].uid > rippleDuration
-          ? 0
-          : rippleDuration;
-      setTimeout(() => {
-        setRipples(ripples => ripples.slice(1));
-      }, delay);
+    if (!disableEffect) {
+      const outTimeStemp = event.nativeEvent.timestamp;
+      if (ripples.length >= 0) {
+        // make longPress finish as soon as possible
+        const delay =
+          ripples.length === 1 && outTimeStemp - ripples[0].uid > rippleDuration
+            ? 0
+            : rippleDuration;
+        setTimeout(() => {
+          setRipples(ripples => ripples.slice(1));
+        }, delay);
+      }
     }
     onPressOut?.(event);
   }
@@ -71,7 +74,6 @@ const RippleWeb: React.FC<RippleProps> = props => {
         { overflow: 'hidden' },
         isFunction(style) ? style(pressed) : style,
       ]}
-      disabled={disabled}
       {...rest}
     >
       {pressed => {

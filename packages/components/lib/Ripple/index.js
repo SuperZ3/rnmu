@@ -1,6 +1,11 @@
 "use strict";
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
+const utils = require("../utils.js");
 const Ripple_Ripple = require("./Ripple.js");
-require("react");
+const Ripple_Ripple_web = require("./Ripple.web.js");
 require("react-native");
-exports.Ripple = Ripple_Ripple.Ripple;
+require("react");
+require("./utils.js");
+require("./RippleElement.js");
+const Ripple = utils.isWeb ? Ripple_Ripple_web.default : Ripple_Ripple.default;
+exports.Ripple = Ripple;
