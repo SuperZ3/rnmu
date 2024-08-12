@@ -4,15 +4,15 @@ import { RippleElementTestId } from './utils';
 
 const RippleElement: React.FC<RippleElementProps> = props => {
   const {
-    rippleConfig: { centerX, centerY, rippleAnim, R },
+    rippleConfig: { emitedX, emitedY, rippleAnim, R },
     rippleOpacity,
     isForeground,
     rippleColor,
   } = props;
 
   const animatedStyle = {
-    top: centerY - R,
-    left: centerX - R,
+    top: emitedY - R,
+    left: emitedX - R,
     width: 2 * R,
     height: 2 * R,
     borderRadius: R,

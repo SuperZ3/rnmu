@@ -7,7 +7,6 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react-native';
 import Ripple from '../Ripple';
-import RippleWeb from '../Ripple.web';
 import { Platform, Text } from 'react-native';
 import { RippleElementTestId } from '../utils';
 
@@ -22,12 +21,6 @@ const EventData = {
 
 jest.useFakeTimers();
 jest.spyOn(global, 'setTimeout');
-
-describe('Export ripple base on Platform', () => {
-  Platform.OS = 'web';
-  const comp = jest.mock('../index.tsx');
-  expect(comp).toEqual(Ripple);
-});
 
 describe('Ripple Component', () => {
   it('should render children correctly', () => {
@@ -144,103 +137,6 @@ describe('Ripple Component', () => {
       ${'onPressOut'}
       ${'onPress'}
       ${'onLongPress'}
-    `('not call $type when event fired', async ({ type }) => {
-      const mockFn = jest.fn();
-      const props = {
-        children: <Text>{type}</Text>,
-        disabled: true,
-        [type]: mockFn,
-      };
-      render(<Ripple {...props} />);
-      const comp = await screen.getByText(type);
-      const event = type
-        .substr(2)
-        .replace(/^[A-Z]/, (f: string) => f.toLowerCase());
-      fireEvent(comp, event, EventData);
-      expect(mockFn).not.toHaveBeenCalled();
-    });
-  });
-});
-
-describe('RippleWeb Component', () => {
-  const Ripple = RippleWeb;
-  it('should render children correctly', () => {
-    const { getByText } = render(
-      <Ripple>
-        <Text>Button</Text>
-      </Ripple>,
-    );
-
-    expect(getByText('Button')).toBeTruthy();
-  });
-
-  describe('ripple effect', () => {
-    afterEach(cleanup);
-    it('ripple effect props match snapshot', async () => {
-      const { toJSON } = render(
-        <Ripple centered foreground rippleColor="red" rippleOpcity={1}>
-          <Text>Button</Text>
-        </Ripple>,
-      );
-      const comp = await screen.getByText('Button');
-      fireEvent(comp, 'pressIn', EventData);
-      expect(toJSON()).toMatchSnapshot();
-    });
-
-    it('onPressIn render ripple effect', async () => {
-      render(
-        <Ripple>
-          <Text>Button</Text>
-        </Ripple>,
-      );
-      const comp = await screen.getByText('Button');
-      fireEvent(comp, 'pressIn', EventData);
-      expect(screen.getByTestId(RippleElementTestId)).toBeDefined();
-      fireEvent(comp, 'pressOut', EventData);
-      await waitForElementToBeRemoved(() =>
-        screen.getByTestId(RippleElementTestId),
-      );
-    });
-  });
-
-  describe('fire event', () => {
-    afterEach(cleanup);
-    it('check PressableState', async () => {
-      const mockedChildren = jest.fn();
-      render(
-        <Ripple testID="pressable" testOnly_pressed>
-          {mockedChildren}
-        </Ripple>,
-      );
-      const comp = await screen.getByTestId('pressable');
-      fireEvent(comp, 'pressIn', EventData);
-      expect(mockedChildren).toHaveBeenCalledWith({ pressed: true });
-    });
-
-    it.each`
-      type
-      ${'onLayout'}
-      ${'onPressIn'}
-      ${'onPressOut'}
-    `('call $type when event fired', async ({ type }) => {
-      const mockFn = jest.fn();
-      const props = {
-        children: <Text>{type}</Text>,
-        [type]: mockFn,
-      };
-      render(<Ripple {...props} />);
-      const comp = await screen.getByText(type);
-      const event = type
-        .substr(2)
-        .replace(/^[A-Z]/, (f: string) => f.toLowerCase());
-      fireEvent(comp, event, EventData);
-      expect(mockFn).toHaveBeenCalledTimes(1);
-    });
-
-    it.each`
-      type
-      ${'onPressIn'}
-      ${'onPressOut'}
     `('not call $type when event fired', async ({ type }) => {
       const mockFn = jest.fn();
       const props = {

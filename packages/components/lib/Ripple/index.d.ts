@@ -1,5 +1,3 @@
-/// <reference types="react" />
+export { default as Ripple } from './Ripple';
 import { RippleProps } from './ripple.type';
 export type { RippleProps };
-declare const Ripple: import("react").FC<RippleProps>;
-export { Ripple };

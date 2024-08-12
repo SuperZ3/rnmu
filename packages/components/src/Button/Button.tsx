@@ -1,11 +1,11 @@
-import { FC, ReactNode, ReactElement, useMemo } from 'react';
+import { FC, ReactNode, ReactElement } from 'react';
 import {
   ActivityIndicator,
   PressableProps,
   StyleProp,
   Text,
   TextStyle,
-  TouchableOpacity,
+  // TouchableOpacity,
   View,
   ViewStyle,
 } from 'react-native';
@@ -58,7 +58,7 @@ export const Button: FC<ButtonProps> = ({
   children,
   startIcon,
   endIcon,
-  interactionEffect,
+  // interactionEffect,
   onPress,
   containerStyle,
   textStyle,
@@ -75,27 +75,17 @@ export const Button: FC<ButtonProps> = ({
   );
 
   const handlePress: PressableProps['onPress'] = event => {
+    console.log('event');
     if (!loading && !disabled && Boolean(onPress)) {
       onPress?.(event);
     }
   };
 
-  const { Touchable, activeOpacity } = useMemo(
-    () => ({
-      Touchable:
-        interactionEffect === 'highlight' || interactionEffect === false
-          ? TouchableOpacity
-          : Ripple,
-      activeOpacity: interactionEffect === false ? 1 : 0.2,
-    }),
-    [interactionEffect],
-  );
-
   return (
-    <Touchable
+    <Ripple
       disabled={disabled}
       onPress={handlePress}
-      activeOpacity={activeOpacity}
+      // activeOpacity={activeOpacity}
       style={buttonStyles.container}
     >
       {!loading && Boolean(startIcon) && (
@@ -112,7 +102,7 @@ export const Button: FC<ButtonProps> = ({
       {!loading && Boolean(endIcon) && (
         <IconWrapper style={buttonStyles.iconEnd}>{endIcon}</IconWrapper>
       )}
-    </Touchable>
+    </Ripple>
   );
 };
 

@@ -1,5 +1,5 @@
 import { FC, ReactNode } from 'react';
-import { Animated, StyleSheet } from 'react-native';
+import { Animated } from 'react-native';
 
 type ElevationLevel = 0 | 1 | 2 | 3 | 4 | 5;
 
@@ -8,8 +8,8 @@ export interface ElevationProps {
   level?: ElevationLevel;
 }
 
-const Elevation: FC<ElevationProps> = ({ children, level = 0 }) => {
-  const styles = StyleSheet.create({});
+const Elevation: FC<ElevationProps> = ({ children }) => {
+  // const styles = StyleSheet.create({});
 
   return <Animated.View>{children}</Animated.View>;
 };

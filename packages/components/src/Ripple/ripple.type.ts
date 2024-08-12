@@ -14,8 +14,8 @@ export interface RippleProps extends PressableProps {
 
 export type RippleElementConfig = {
   uid: number;
-  centerX: number;
-  centerY: number;
+  emitedX: number;
+  emitedY: number;
   rippleAnim: Animated.Value;
   R: number;
 };

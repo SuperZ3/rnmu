@@ -2,11 +2,12 @@
 Object.defineProperty(exports, Symbol.toStringTag, { value: "Module" });
 const Button_Button = require("./Button.js");
 require("react-native");
-require("../Ripple/index.js");
-require("../utils.js");
 require("../Ripple/Ripple.js");
 require("react");
+require("../utils.js");
 require("../Ripple/utils.js");
 require("../Ripple/RippleElement.js");
-require("../Ripple/Ripple.web.js");
+require("./style.js");
+require("../Style/theming.js");
+require("../tokens-50ba0476.js");
 exports.Button = Button_Button.Button;

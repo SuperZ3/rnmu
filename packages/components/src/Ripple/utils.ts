@@ -1,5 +1,6 @@
 import { Animated, Easing, GestureResponderEvent } from 'react-native';
 import { RippleElementConfig } from './ripple.type';
+import { isNumber, isWeb } from '../utils';
 
 export const RippleElementTestId = 'RippleElementTestId';
 
@@ -9,18 +10,32 @@ export function getRipple(
   targetHeight: number,
   isCentered: boolean,
 ) {
-  const { locationX, locationY, timestamp } = event.nativeEvent;
+  let { locationX, locationY } = event.nativeEvent;
+  if (
+    isWeb &&
+    'offsetX' in event.nativeEvent &&
+    isNumber(event.nativeEvent.offsetX) &&
+    'offsetY' in event.nativeEvent &&
+    isNumber(event.nativeEvent.offsetY)
+  ) {
+    locationX = event.nativeEvent.offsetX;
+    locationY = event.nativeEvent.offsetY;
+  }
   const halfW = targetWidth * 0.5;
   const halfH = targetHeight * 0.5;
-  const centerX = isCentered ? halfW : locationX;
-  const centerY = isCentered ? halfH : locationY;
-  const offsetX = Math.abs(centerX - halfW);
-  const offsetY = Math.abs(centerY - halfH);
+  let emitedX = locationX;
+  let emitedY = locationY;
+  if (isCentered) {
+    emitedX = halfW;
+    emitedY = halfH;
+  }
+  const offsetX = Math.abs(emitedX - halfW);
+  const offsetY = Math.abs(emitedY - halfH);
   const R = Math.sqrt((halfW + offsetX) ** 2 + (halfH + offsetY) ** 2);
   return {
-    uid: timestamp,
-    centerX,
-    centerY,
+    uid: event.nativeEvent.timestamp,
+    emitedX,
+    emitedY,
     rippleAnim: new Animated.Value(0),
     R,
   };
