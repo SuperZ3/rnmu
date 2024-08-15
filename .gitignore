@@ -11,6 +11,8 @@ dist-ssr
 *.local
 coverage
 example/.expo
+docs/.docusaurus
+docs/build
 
 # Editor directories and files
 .vscode/*
