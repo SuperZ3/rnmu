@@ -10,25 +10,27 @@ const RippleElement: React.FC<RippleElementProps> = props => {
     rippleColor,
   } = props;
 
-  const animatedStyle = {
-    top: emitedY - R,
-    left: emitedX - R,
-    width: 2 * R,
-    height: 2 * R,
-    borderRadius: R,
-    backgroundColor: rippleColor,
-    opacity: rippleAnim.interpolate({
-      inputRange: [0, 1],
-      outputRange: [0, rippleOpacity],
-    }),
-    transform: [{ scale: rippleAnim }, { perspective: 1000 }],
-    zIndex: isForeground ? -1 : 0,
-  };
-
   return (
     <Animated.View
       testID={RippleElementTestId}
-      style={[styles.rippleElement, animatedStyle]}
+      style={[
+        styles.rippleElement,
+        {
+          top: emitedY - R,
+          left: emitedX - R,
+          width: 2 * R,
+          height: 2 * R,
+          borderRadius: R,
+          backgroundColor: rippleColor,
+          opacity: rippleAnim.interpolate({
+            inputRange: [0, 1],
+            outputRange: [0, rippleOpacity],
+          }),
+          transform: [{ scale: rippleAnim }, { perspective: 1000 }],
+          zIndex: isForeground ? -1 : 0,
+        },
+      ]}
+      pointerEvents={'none'}
     ></Animated.View>
   );
 };

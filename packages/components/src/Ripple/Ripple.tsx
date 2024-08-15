@@ -89,16 +89,17 @@ const Ripple: React.FC<RippleProps> = props => {
       onLongPress={handleLongPress}
       onPressOut={handlePressOut}
       onLayout={handleLayout}
-      style={pressed => [
-        { overflow: 'hidden' },
-        isFunction(style) ? style(pressed) : style,
+      style={state => [
+        { overflow: 'hidden', position: 'relative' },
+        isFunction(style) ? style(state) : style,
       ]}
+      pointerEvents="box-only"
       {...rest}
     >
-      {pressed => {
+      {state => {
         return (
           <>
-            {isFunction(children) ? children(pressed) : children}
+            {isFunction(children) ? children(state) : children}
             {ripples.map(rippleConfig => (
               <RippleElement
                 key={rippleConfig.uid}

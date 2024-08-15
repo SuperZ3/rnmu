@@ -1,6 +1,6 @@
 import { Animated, Easing, GestureResponderEvent } from 'react-native';
 import { RippleElementConfig } from './ripple.type';
-import { isNumber, isWeb } from '../utils';
+import { isNumber } from '../utils';
 
 export const RippleElementTestId = 'RippleElementTestId';
 
@@ -12,7 +12,8 @@ export function getRipple(
 ) {
   let { locationX, locationY } = event.nativeEvent;
   if (
-    isWeb &&
+    locationX === undefined &&
+    locationY === undefined &&
     'offsetX' in event.nativeEvent &&
     isNumber(event.nativeEvent.offsetX) &&
     'offsetY' in event.nativeEvent &&
@@ -33,7 +34,7 @@ export function getRipple(
   const offsetY = Math.abs(emitedY - halfH);
   const R = Math.sqrt((halfW + offsetX) ** 2 + (halfH + offsetY) ** 2);
   return {
-    uid: event.nativeEvent.timestamp,
+    uid: event.timeStamp,
     emitedX,
     emitedY,
     rippleAnim: new Animated.Value(0),

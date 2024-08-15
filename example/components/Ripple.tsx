@@ -5,14 +5,20 @@ import { Ripple } from '@rnmu/components';
 
 const RippleExample = () => {
   return (
-    <Ripple
-      style={styles.ripple}
-      onPress={() => {}}
-      rippleColor="rgba(0, 0, 0, .32)">
-      <View pointerEvents="none">
-        <Text>Press anywhere</Text>
-      </View>
-    </Ripple>
+    <View style={styles.container}>
+      <Ripple
+        onPress={() => {}}
+        rippleColor="rgba(0, 0, 0, .32)"
+        style={{
+          width: '100%',
+          height: '100%',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <Text style={{ fontSize: 20 }}>Press anywhere</Text>
+      </Ripple>
+    </View>
   );
 };
 
@@ -21,9 +27,7 @@ RippleExample.title = 'Ripple';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  },
-  ripple: {
-    flex: 1,
+    display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
   },

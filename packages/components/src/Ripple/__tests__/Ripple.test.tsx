@@ -7,7 +7,7 @@ import {
   waitForElementToBeRemoved,
 } from '@testing-library/react-native';
 import Ripple from '../Ripple';
-import { Platform, Text } from 'react-native';
+import { Text } from 'react-native';
 import { RippleElementTestId } from '../utils';
 
 const EventData = {
